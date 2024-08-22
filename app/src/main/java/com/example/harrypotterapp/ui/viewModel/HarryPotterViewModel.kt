@@ -32,7 +32,7 @@ class HarryPotterViewModel @Inject constructor(
     }
 
 
-    private fun getHarryPotterAllCharacters() {
+    fun getHarryPotterAllCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             harryPotterRepository.getAllCharacters()
                 .collectLatest {
