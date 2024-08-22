@@ -84,9 +84,7 @@ fun CharacterList(
         LazyColumn {
             items(characters) { character ->
                 CharacterRow(character) {
-                    //navController.currentBackStackEntry?.savedStateHandle?.set("character", character)
                     navController.navigate("characterDetail/${character.name}")
-                    //navController.navigate("characterDetail")
                 }
             }
         }

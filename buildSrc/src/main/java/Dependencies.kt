@@ -1,5 +1,3 @@
-//com.google.android.material:material:1.12.0"
-//com.google.dagger:hilt-android-compiler:2.44
 object Dependencies {
     val coreKtx by lazy { "androidx.core:core-ktx:${Versions.coreKtx}" }
     val lifecycleRuntime by lazy { "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRuntime}" }
