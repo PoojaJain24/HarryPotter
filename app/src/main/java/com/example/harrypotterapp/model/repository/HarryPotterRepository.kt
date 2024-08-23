@@ -1,17 +1,13 @@
 package com.example.harrypotterapp.model.repository
 
 import com.example.harrypotterapp.model.api.ApiService
-import com.example.harrypotterapp.model.database.HarryPotterDao/*
-import com.example.harrypotterapp.model.datasource.HarryPotterDataSource
-import com.example.harrypotterapp.model.datasource.LocalHarryPotterDataSource
-import com.example.harrypotterapp.model.datasource.RemoteHarryPotterDataSource*/
+import com.example.harrypotterapp.model.database.HarryPotterDao
 import com.example.harrypotterapp.model.database.HarryPotterEntity
 import com.example.harrypotterapp.model.entity.HarryPotterCharacter
 import com.example.utilities.ResultState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import retrofit2.Response
 import javax.inject.Inject
 
 class HarryPotterRepository @Inject constructor(
