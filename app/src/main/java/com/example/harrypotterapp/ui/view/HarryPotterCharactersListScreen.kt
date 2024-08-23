@@ -47,7 +47,6 @@ fun HarryPotterCharactersListScreen(
             }
 
             is ResultState.Success -> {
-                Log.d(TAG, "Inside_Success")
                 val characters: List<HarryPotterCharacter> =
                     (harryPotterCharacters as ResultState.Success<List<HarryPotterCharacter>>).data
                 CharacterList(characters, harryPotterViewModel, navController)
