@@ -1,9 +1,8 @@
-package com.example.harrypotterapp
+package com.example.harrypotterapp.ui.viewModel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.harrypotterapp.model.entity.HarryPotterCharacter
 import com.example.harrypotterapp.model.repository.HarryPotterRepository
-import com.example.harrypotterapp.ui.viewModel.HarryPotterViewModel
 import com.example.utilities.ResultState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -145,6 +144,28 @@ class HarryPotterViewModelTest {
         val fetchedCharacters = (actualState as ResultState.Success).data
         assert(fetchedCharacters == matchingCharacters) {
             "Expected $matchingCharacters but was $fetchedCharacters"
+        }
+    }
+
+    @Test
+    fun `test fetch all characters with error`() = testScope.runTest {
+
+        val exception = RuntimeException("API Error")
+
+        // Mock the repository to return a flow that emits a error state
+        Mockito.`when`(harryPotterRepository.getAllCharacters()).thenReturn(flow {
+            emit(ResultState.Error(exception))
+        })
+
+        // Act: call the method to fetch characters
+        viewModel.getHarryPotterAllCharacters()
+
+        // Wait until all coroutines have completed
+        advanceUntilIdle()
+
+        val actualState = viewModel.harryPotterCharacters.value
+        assert(actualState is ResultState.Error) {
+            "Expected Error state but was $actualState"
         }
     }
 
